@@ -132,7 +132,6 @@ public class SettingResource extends ProtectedResource
         
     /**
      * Adds a setting to the system.
-     * @param uriInfo Injected URI context used for building the location URI.
      * @param name The name of the setting to add.
      * @param value The value of the setting.
      * @return Status of 201 if the setting was created or a status of 409 if a setting with the same name
@@ -171,7 +170,7 @@ public class SettingResource extends ProtectedResource
     		
     		final org.nhindirect.config.store.Setting addSetting = new org.nhindirect.config.store.Setting();
     		addSetting.setName(name);
-    		addSetting.setValue(value);
+    		addSetting.setSettingValue(value);
     		settingRepo.save(addSetting);
     		
 
@@ -213,7 +212,7 @@ public class SettingResource extends ProtectedResource
     	
     	try
     	{
-    		retSetting.setValue(value);
+    		retSetting.setSettingValue(value);
     		settingRepo.save(retSetting);
     		
     		return ResponseEntity.status(HttpStatus.NO_CONTENT).cacheControl(noCache).build();

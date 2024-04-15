@@ -308,7 +308,7 @@ public class EntityModelConversion
     		retVal.setStatus(EntityStatus.valueOf(setting.getStatus().toString()));
     	retVal.setUpdateTime(setting.getUpdateTime());
     	retVal.setCreateTime(setting.getCreateTime());
-    	retVal.setValue(setting.getValue());
+    	retVal.setValue(setting.getSettingValue());
     	
     	return retVal;
     }    
