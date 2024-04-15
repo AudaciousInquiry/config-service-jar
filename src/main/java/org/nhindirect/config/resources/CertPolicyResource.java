@@ -49,6 +49,7 @@ import org.nhindirect.config.repository.DomainRepository;
 import org.nhindirect.config.resources.util.EntityModelConversion;
 import org.nhindirect.config.store.CertPolicyGroupReltn;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -98,7 +99,7 @@ public class CertPolicyResource extends ProtectedResource
      */
     public CertPolicyResource()
     {
-		
+
 	}
     
     /**
@@ -141,11 +142,14 @@ public class CertPolicyResource extends ProtectedResource
     {
         this.reltnRepo = reltnRepo;
     }
-    
-    @Autowired 
-    public void setInternalThisProxy(CertPolicyResource internalProxy)
+
+	/*
+	circular reference caused w/o @Lazy after moving from 2.1 to 2.7 Spring Boot
+	 */
+    @Autowired
+    public void setInternalThisProxy(@Lazy CertPolicyResource internalProxy)
     {
-    	transactionalThisProxy = internalProxy;
+    	this.transactionalThisProxy = internalProxy;
     }
     
     /**

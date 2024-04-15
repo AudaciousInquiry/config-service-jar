@@ -5,8 +5,8 @@ import static org.mockito.Mockito.mock;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Matchers.eq;
-import static org.mockito.Matchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.ArgumentMatchers.any;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -108,7 +108,7 @@ public class SettingResource_addSettingTest extends SpringBaseTest
 						final Setting addedSetting = addedSettingsIter.next(); 
 						
 						assertEquals(addedSetting.getName(), retrievedSetting.getName());
-						assertEquals(addedSetting.getValue(), retrievedSetting.getValue());
+						assertEquals(addedSetting.getValue(), retrievedSetting.getSettingValue());
 					}
 					
 				}
